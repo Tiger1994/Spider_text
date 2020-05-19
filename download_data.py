@@ -3,6 +3,7 @@ from tqdm import tqdm
 from bs4 import BeautifulSoup
 import json
 import jieba
+import datetime
 
 
 def get_content(target):
@@ -26,11 +27,9 @@ if __name__ == '__main__':
     chapter_bs = BeautifulSoup(html, 'lxml')
     chapters = chapter_bs.find('div', id='list')
     chapters = chapters.find_all('a')
-
-    record = {
-        'author': '吴楚飞',
-        'time': '2020-05-18'
-    }
+    record = dict()
+    record['author'] = "吴楚飞"
+    record['time'] = datetime.datetime.now().strftime('%Y-%m-%d')
     for chapter in tqdm(chapters):
         chapter_name = chapter.string
         url = server + chapter.get('href')
