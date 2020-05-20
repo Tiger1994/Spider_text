@@ -49,8 +49,8 @@ if __name__ == '__main__':
         keywords = ''
         keywords_len = min(5, len(counts))
         for i in range(keywords_len):
-            keywords = keywords + counts[i][0] + ' '
-        keywords = keywords.rstrip()
+            keywords = keywords + counts[i][0] + ','
+        keywords = keywords[0:-1]
         record['keywords'] = keywords
 
         save_name = 'dataset/'+chapter_name+'.json'
